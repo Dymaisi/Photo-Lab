@@ -21,6 +21,7 @@ coverage
 
 # Distribution / packaging
 .Python
+env/
 build/
 develop-eggs/
 dist/
