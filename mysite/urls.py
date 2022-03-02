@@ -15,9 +15,10 @@ urlpatterns = [
     path('documents/', include(wagtaildocs_urls)),
 
     path('search/', search_views.search, name='search'),
-
+    path('', include('image_style.urls')),
     path('', include('image_classification.urls')),
-    path('admin/', admin.site.urls),
+
+
 ]
 
 

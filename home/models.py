@@ -5,5 +5,4 @@ from wagtail.admin.edit_handlers import FieldPanel
 
 class HomePage(Page):
     #Home page model
-
-    templates = "templates\index.html"
+    templates= "image_style\style.html"
