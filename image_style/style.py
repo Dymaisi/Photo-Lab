@@ -22,8 +22,9 @@ def show_img(img):
     img.show()
 
 
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
 class Content_Loss(nn.Module):
     def __init__(self, target, weight):
         super(Content_Loss, self).__init__()
@@ -41,6 +42,7 @@ class Content_Loss(nn.Module):
         self.loss.backward(retain_graph=retain_graph)
         return self.loss
 
+
 class Gram(nn.Module):
     def __init__(self):
         super(Gram, self).__init__()
@@ -51,6 +53,7 @@ class Gram(nn.Module):
         gram = torch.mm(feature, feature.t())
         gram /= (a * b * c * d)
         return gram
+
 
 class Style_Loss(nn.Module):
     def __init__(self, target, weight):
@@ -85,7 +88,6 @@ def get_style_model_and_loss(style_img,
                              content_weight=2,
                              content_layers=content_layers_default,
                              style_layers=style_layers_default):
-
     content_loss_list = []
     style_loss_list = []
 
@@ -123,7 +125,6 @@ def get_style_model_and_loss(style_img,
             model.add_module(name, layer)
 
     return model, style_loss_list, content_loss_list
-
 
 
 def get_input_param_optimier(input_img):

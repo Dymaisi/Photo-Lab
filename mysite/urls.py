@@ -13,10 +13,12 @@ urlpatterns = [
 
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
+    # path('login/', include('login.urls')),  # 添加
+    path('', include('login.urls')),  # 添加
 
     path('search/', search_views.search, name='search'),
-    path('', include('image_style.urls')),
-    path('', include('image_classification.urls')),
+    path('image_style/', include('image_style.urls')),  # 修改 原 path('', include('image_style.urls')),
+    path('image_classification/', include('image_classification.urls')),  # 修改 原 path('', include('image_classification.urls')),
 
 
 ]

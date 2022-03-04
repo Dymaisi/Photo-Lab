@@ -18,6 +18,7 @@ def transform_image(image_bytes):
     image = image.unsqueeze(0)
     return image
 
+
 def get_style_image(image_bytes):
     """For given image bytes, predict the label using the pretrained DenseNet"""
     image=transform_image(image_bytes)
