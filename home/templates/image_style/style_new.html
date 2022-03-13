@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Border Animation Effect with SVG</title>
+    <meta name="description" content="AIPhoto"/>
+    <title>AIPhoto</title>
+    <meta name="keywords" content="svg, border effect, animated border, line, grid item, hover, css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/demo_option.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component_image.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/button.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fancySelect.css' %}"/>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body style="background:#2c3e50">
+<div class="container">
+    <div style="display:grid; justify-self: center;justify-content:center;grid-template-columns: 300px 1200px;">
+    <div id="style" style="background: transparent;width:200px;height: 200px;margin-left:180px">
+        <img src="__PUBLIC__/images/style.png"
+             style=" max-width: 100%;max-height: 100%;"/>
+    </div>
+    <header class="codrops-header">
+        <h1>风格迁移</h1>
+        <p>选择想要的风格或自己上传风格图，再选择照片</p>
+    </header>
+    </div>
+
+    <div class="effect-group-container toolbar-2" style="background:transparent">
+        <form enctype="multipart/form-data" action="/uploadFile/" method="post"
+              style="display:grid; justify-self: center;justify-content:center;grid-template-columns: 300px 300px 300px 300px;">
+            <div id="select">
+                <section id="basic-usage">
+                    <select id="basic-usage-demo">
+                        <option value="">选择风格</option>
+                        <option>浮世绘</option>
+                        <option>星空</option>
+                        <option>Vehicula Ornare</option>
+                        <option>Foo</option>
+                        <option>Bar</option>
+                        <option>Baz</option>
+                        <option>Qux</option>
+                        <option>Zoobie</option>
+                        <option>Frang</option>
+                    </select>
+                </section>
+            </div>
+            <div class="btn-border btn-round btn-blue" style="width:200px;height:38px;">
+                <label id="realBtn1" class="btn" style="background:transparent;width:200px;height:38px">
+                    <input type="file" id="chooseStyle" name="file" class="mFileInput"
+                           style="left:-9999px;position:absolute;">
+                    <span>自定义风格</span>
+                </label>
+            </div>
+            <div class="btn-border btn-round btn-blue" style="width:200px;height:38px;">
+                <label id="realBtn2" class="btn" style="background:transparent;width:200px;height:38px">
+                    <input type="file" id="chooseImage" name="file" class="mFileInput"
+                           style="left:-9999px;position:absolute;">
+                    <span>选择图片</span>
+                </label>
+            </div>
+            <div class="btn-border btn-round btn-blue" style="width:200px;height:38px;">
+                <input type="submit" value="处理图片" class="btn btn-blue" style="width:200px;width:200px;height:38px"/>
+            </div>
+        </form>
+    </div>
+
+    <section class="demo-3">
+        <div class="grid"
+             style="display: grid;grid-template-columns: 650px 650px ;grid-template-rows: 500px; justify-self: center;justify-content:center">
+            <div class="box" style="width:600px;height:400px">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                    <line class="top" x1="0" y1="0" x2="1800" y2="0"/>
+                    <line class="left" x1="0" y1="400" x2="0" y2="-800"/>
+                    <line class="bottom" x1="600" y1="400" x2="-1200" y2="400"/>
+                    <line class="right" x1="600" y1="0" x2="600" y2="1200"/>
+                </svg>
+                <div id="image" style="  background: transparent;width:100%;height: 100%;">
+                    <img src="__PUBLIC__/images/image.png"
+                         style=" max-width: 95%;max-height: 95%;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);"/>
+                </div>
+            </div>
+            <div class="box" style="width:600px;height:400px">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                    <line class="top" x1="0" y1="0" x2="1800" y2="0"/>
+                    <line class="left" x1="0" y1="400" x2="0" y2="-800"/>
+                    <line class="bottom" x1="600" y1="400" x2="-1200" y2="400"/>
+                    <line class="right" x1="600" y1="0" x2="600" y2="1200"/>
+                </svg>
+            </div>
+        </div><!-- /grid -->
+    </section>
+    <script src="{% static 'js/button.js' %}"></script>
+    <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+    <script src="{% static 'js/fancySelect.js' %}"></script>
+    <script type="text/javascript">
+		$(document).ready(function(){
+			$('#basic-usage-demo').fancySelect();
+		});
+    </script>
+    <script>
+document.getElementById('chooseStyle').onchange = function() {
+    var imgFile = this.files[0];
+    var name = this.files[0].name;
+    var endindex = name.lastIndexOf(".");
+    var className = name.slice(endindex+1,name.length);
+    if(className=="jpg"||className=="jpeg"||className=="png"){
+        var fr = new FileReader();
+        fr.onload = function() {
+            document.getElementById('style').getElementsByTagName('img')[0].src = fr.result;
+        };
+        fr.readAsDataURL(imgFile);
+    }
+    else{
+        alert("暂只支持jpg、jpeg、png格式图片，请重新选择！");
+    }
+};
+
+    </script>
+    <script>
+document.getElementById('chooseImage').onchange = function() {
+    var imgFile = this.files[0];
+    var name = this.files[0].name;
+    var endindex = name.lastIndexOf(".");
+    var className = name.slice(endindex+1,name.length);
+    if(className=="jpg"||className=="jpeg"||className=="png"){
+        var fr = new FileReader();
+        fr.onload = function() {
+            document.getElementById('image').getElementsByTagName('img')[0].src = fr.result;
+        };
+        fr.readAsDataURL(imgFile);
+    }
+    else{
+        alert("暂只支持jpg、jpeg、png格式图片，请重新选择！");
+    }
+};
+
+    </script>
+</div><!-- /container -->
+</body>
+</html>

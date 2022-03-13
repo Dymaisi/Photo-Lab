@@ -71,4 +71,4 @@ def index(request):
         'image_uri': image_uri,
         'style_image_uri': style_image_uri,
     }
-    return render(request, 'image_style/style.html', context)
+    return render(request, 'image_style/style_new.html', context)

@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'search',
     'image_style.apps.ImageStyleConfig',
     'image_classification.apps.ImageClassificationConfig',
-
+    'image_color.apps',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -51,7 +51,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',  # 添加
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # 添加
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',

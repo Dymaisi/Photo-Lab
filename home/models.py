@@ -8,3 +8,4 @@ class HomePage(Page):
     # Home page model
     templates = "image_style\style.html"
     # templates = "image_style\\option\\option.html"
+
