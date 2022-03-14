@@ -20,6 +20,7 @@ urlpatterns = [
     path('image_style/', include('image_style.urls')),  # 修改 原 path('', include('image_style.urls')),
     path('image_classification/', include('image_classification.urls')),  # 修改 原 path('', include('image_classification.urls')),
     path('image_color/', include('image_color.urls')),
+    path('image_restore/', include('image_restore.urls')),
     re_path(r'media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
 
 ]

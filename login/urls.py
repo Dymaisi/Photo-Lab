@@ -8,4 +8,5 @@ urlpatterns = [
     # two paths: with or without given image
     path('', views.index, name='login'),
     path('option', views.enter, name='option'),
+    path('sign_in', views.sign, name='sign_in')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

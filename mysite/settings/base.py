@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'image_style.apps.ImageStyleConfig',
     'image_classification.apps.ImageClassificationConfig',
     'image_color.apps',
+    'image_restore.apps.ImageRestoreConfig',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
