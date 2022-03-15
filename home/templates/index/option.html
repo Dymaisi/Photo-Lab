@@ -6,56 +6,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Border Animation Effect with SVG</title>
-    <meta name="description" content="AIPhoto"/>
-    <title>AIPhoto</title>
+    <meta name="description" content="Photo-Lab"/>
+    <title>Photo-Lab</title>
     <meta name="keywords" content="svg, border effect, animated border, line, grid item, hover, css"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/demo_option.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/component_option.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/background.css' %}"/>
+    <style>
+        .bg {
+            background: url(./../static/image/source.gif);
+            height:800px;
+            text-align: center;
+        }
+        .bg-blur {
+            float: left;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        .content-front {
+          position:absolute;
+          left: 10px;
+          right: 10px;
+          text-align: center;
+        }
+    </style>
+
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body>
-<div class="container">
-    <section class="demo-3" style="padding:0 0">
-        <h2>选择</h2>
+<body >
+<div class="bg bg-blur"></div>
+<div class="content-front">
+    <div class="container">
+    <section class="demo-3" >
+        <h2 style="font-size:48px">选择</h2>
         <div class="grid">
             <div class="box" onclick="window.open('image_style')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <line class="top" x1="0" y1="0" x2="900" y2="0"/>
+                    <line class="top" x1="0" y1="0" x2="900" y2="0" style="color:"/>
                     <line class="left" x1="0" y1="600" x2="0" y2="-1000"/>
                     <line class="bottom" x1="400" y1="600" x2="-600" y2="600"/>
                     <line class="right" x1="400" y1="0" x2="400" y2="1380"/>
                 </svg>
-                <h3>风格</h3>
-                <span style="padding-top:12em">风格迁移</span>
-                <span>赋予照片艺术气息</span>
+                <embed src="{% static 'image/style_white.svg' %}" style="padding-top:150px"/>
+                <span style="padding-top:14em">风格迁移 怦然心动</span>
             </div>
-            <div class="box" onclick="window.open('image_color')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <div xmlns="http://www.w3.org/2000/svg" class="box" onclick="window.open('image_color')">
+                <svg width="100%" height="100%">
                     <line class="top" x1="0" y1="0" x2="900" y2="0"/>
                     <line class="left" x1="0" y1="600" x2="0" y2="-1200"/>
                     <line class="bottom" x1="400" y1="600" x2="-600" y2="600"/>
                     <line class="right" x1="400" y1="0" x2="400" y2="1380"/>
                 </svg>
-                <h3>色彩</h3>
-                <span style="padding-top:12em">图像上色</span>
-                <span>旧照片焕发新生</span>
+                <embed src="{% static 'image/color_white.svg' %}" style="padding-top:150px"/>
+                <span style="padding-top:14em">图像上色 你好色彩</span>
             </div>
-            <div class="box" onclick="window.open('image_restore')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <div xmlns="http://www.w3.org/2000/svg" class="box" onclick="window.open('testapp')">
+                <svg width="100%" height="100%">
                     <line class="top" x1="0" y1="0" x2="900" y2="0"/>
                     <line class="left" x1="0" y1="600" x2="0" y2="-1200"/>
                     <line class="bottom" x1="400" y1="600" x2="-600" y2="600"/>
                     <line class="right" x1="400" y1="0" x2="400" y2="1380"/>
                 </svg>
-                <h3>修复</h3>
-                <span style="padding-top:12em">图像修复</span>
-                <span>旧照片焕发新生</span>
+                <embed src="{% static 'image/restore_white.svg' %}" style="padding-top:150px"/>
+                <span style="padding-top:14em">图像修复  焕发新生</span>
             </div>
         </div><!-- /grid -->
     </section>
 </div><!-- /container -->
+</div>
+
 </body>
 </html>

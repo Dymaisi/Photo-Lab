@@ -21,7 +21,8 @@ urlpatterns = [
     path('image_classification/', include('image_classification.urls')),  # 修改 原 path('', include('image_classification.urls')),
     path('image_color/', include('image_color.urls')),
     path('image_restore/', include('image_restore.urls')),
-    re_path(r'media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
+    path('testapp/', include('testapp.urls')),
+    # re_path(r'media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
 
 ]
 

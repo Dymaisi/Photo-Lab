@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load static %}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>AIPhoto</title>
-    <link rel="stylesheet" type="text/css" href="static/index/normalize.css"/>
-    <!--    <link rel="stylesheet" type="text/css" href="static/css/demo_index.css"/>-->
-    <link rel="stylesheet" type="text/css" href="static/index/component_index.css"/>
+    <title>Photo-Lab</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component_index.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/background.css' %}"/>
     <link href="https://fonts.googleapis.com/css?family=Lato:900|Rye&display=swap" rel="stylesheet">
     <style>
 		.wrapper{
@@ -27,7 +27,7 @@
 		  left: 50%;
 		  top: 50%;
 		  transform: translate(-50%, -50%);
-		  background: url(static/index/source.gif);
+		  background: url(./../static/image/source.gif);
 		  background-clip: text;
 		  -webkit-background-clip: text;
 		}
@@ -40,13 +40,13 @@
 		   left: 50%;
 		   top: 50%;
 		   transform: translate(-50%, -50%);
-		   background: url(static/index/source.gif);
+		   background: url(./../static/image/source.gif);
 		   background-clip: text;
 		   -webkit-background-clip: text;
 		   background-size: 43%;
 		}
 		.bg {
-            background: url(static/index/source.gif);
+            background: url(./../static/image/source.gif);
             height:800px;
             text-align: center;
         }
@@ -56,20 +56,13 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
-			filter: blur(10px) brightness(0.6);
         }
-        .content-front {
-          position:absolute;
-          left: -12px;
-          right: 0px;
-          text-align: center;
-        }
+
 
     </style>
 </head>
-<body>
-<div class="bg bg-blur" style="filter: blur(0px);"></div>
-<div class="bg bg-blur" style="position:absolute;left: 0px;right: 0px;"></div>
+<body style="background: #2c3e50;">
+<div class="bg bg-blur"></div>
 <div class="content-front">
     <div class="wrapper">
         <div class="text" data-text="Photo-Lab">Photo-Lab</div>
@@ -77,9 +70,9 @@
         <section class="color-1"
                  style="background: #00000000;text-align: center;transform: translate(0%, -15%);padding-top:10rem">
             <nav class="cl-effect-1">
-                <a href="#">注册</a>
                 <a href="sign_in">登录</a>
                 <a href="option">进入</a>
+                <a href="test">test</a>
             </nav>
         </section>
 </div>
