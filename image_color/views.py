@@ -27,6 +27,11 @@ def index(request):
 
     if request.method == 'POST':
         # in case of POST: get the uploaded image from the form and process it
+        '''image = models.StyleUpload(
+            photo=request.FILES.get('photo'),
+            user=request.FILES.get('photo').name
+        )
+        image.save()'''
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             # retrieve the uploaded image and convert it to bytes (for PyTorch)

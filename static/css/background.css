@@ -1,0 +1,24 @@
+.bg {
+    height:800px;
+    text-align: center;
+}
+.bg-blur {
+    float: left;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment:fixed;
+    -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(15px);
+}
+
+.content-front {
+  position:absolute;
+  left: 10px;
+  right: 10px;
+  text-align: center;
+}

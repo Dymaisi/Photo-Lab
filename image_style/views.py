@@ -33,6 +33,24 @@ def get_style_image(image_bytes):
     return output_image
 
 
+BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+def get_user_profiles(request):
+  if request.method == 'POST':
+    if request.FILES:
+      myFile =None
+      for i in request.FILES:
+        myFile = request.FILES[i]
+      if myFile:
+        dir = os.path.join(BASE_DIR, 'media')
+        dirupload = os.path.join(dir,'style_upload')
+        destination = open(os.path.join(dirupload, myFile.name),
+                  'wb+')
+        for chunk in myFile.chunks():
+          destination.write(chunk)
+        destination.close()
+      return myFile.name
+
+
 import base64
 from django.shortcuts import render
 from .forms import ImageUploadForm
@@ -72,3 +90,4 @@ def index(request):
         'style_image_uri': style_image_uri,
     }
     return render(request, 'image_style/style_new.html', context)
+

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Picwebsite.iml" filepath="$PROJECT_DIR$/.idea/Picwebsite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/django-crud-ajax-login-register-fileupload.iml" filepath="$PROJECT_DIR$/.idea/django-crud-ajax-login-register-fileupload.iml" />
     </modules>
   </component>
 </project>

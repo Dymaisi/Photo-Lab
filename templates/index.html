@@ -1,0 +1,55 @@
+{% extends 'layout/option.html' %}
+
+{% load static %}
+{% block body %}
+
+<div class="bg bg-blur"></div>
+<div class="content-wrapper">
+    <div class="container">
+    <section class="demo-3" >
+        <br/><br/>
+        <div class="grid">
+            <div class="box" onclick="window.open('image_style')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                    <line class="top" x1="0" y1="0" x2="900" y2="0" style="color:"/>
+                    <line class="left" x1="0" y1="600" x2="0" y2="-1200"/>
+                    <line class="bottom" x1="320" y1="600" x2="-600" y2="600"/>
+                    <line class="right" x1="320" y1="0" x2="320" y2="1380"/>
+                </svg>
+                <embed src="{% static 'image/style_white.svg' %}" style="padding-top:150px"/>
+                <span style="padding-top:16em">风格迁移 怦然心动</span>
+            </div>
+            <div xmlns="http://www.w3.org/2000/svg" class="box" onclick="window.open('image_color')">
+                <svg width="100%" height="100%">
+                    <line class="top" x1="0" y1="0" x2="900" y2="0"/>
+                    <line class="left" x1="0" y1="600" x2="0" y2="-1200"/>
+                    <line class="bottom" x1="320" y1="600" x2="-600" y2="600"/>
+                    <line class="right" x1="320" y1="0" x2="320" y2="1380"/>
+                </svg>
+                <embed src="{% static 'image/color_white.svg' %}" style="padding-top:150px"/>
+                <span style="padding-top:16em">图像上色 你好色彩</span>
+            </div>
+            <div xmlns="http://www.w3.org/2000/svg" class="box" onclick="window.open('image_restore')">
+                <svg width="100%" height="100%">
+                    <line class="top" x1="0" y1="0" x2="900" y2="0"/>
+                    <line class="left" x1="0" y1="600" x2="0" y2="-1200"/>
+                    <line class="bottom" x1="320" y1="600" x2="-600" y2="600"/>
+                    <line class="right" x1="320" y1="0" x2="320" y2="1380"/>
+                </svg>
+                <embed src="{% static 'image/restore_white.svg' %}" style="padding-top:150px"/>
+                <span style="padding-top:16em">图像修复  焕发新生</span>
+            </div>
+        </div><!-- /grid -->
+    </section>
+</div><!-- /container -->
+</div>
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#basic-usage-demo').fancySelect();
+    });
+</script>
+{% endblock %}
+{% block javascript %}
+{% endblock %}

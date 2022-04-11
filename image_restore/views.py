@@ -10,7 +10,7 @@ from django.shortcuts import render, redirect, HttpResponse
 import datetime
 from .restorage.run import run_cmd
 
-BASE_DIR = os.path.dirname((os.path.abspath(__file__)))
+BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 print(BASE_DIR)
 def get_user_profiles(request):
   if request.method == 'POST':
@@ -19,9 +19,8 @@ def get_user_profiles(request):
       for i in request.FILES:
         myFile = request.FILES[i]
       if myFile:
-        dir = os.path.join(BASE_DIR, 'restorage')
-        dirupload = os.path.join(os.path.join(dir,'test_images'),'old_w_scratch')
-        dirout=os.path.join(dir,'output')
+        dir = os.path.join(BASE_DIR, 'media')
+        dirupload = os.path.join(os.path.join(dir,'restore_upload'),'old_w_scratch')
         destination = open(os.path.join(dirupload, myFile.name),
                   'wb+')
         for chunk in myFile.chunks():
@@ -49,16 +48,18 @@ def index(request):
             # get predicted label with previously implemented PyTorch function
             try:
                 file_name=get_user_profiles(request)
-                dir = os.path.join(os.path.join(os.path.join(BASE_DIR, 'restorage')))
-                dirupload = os.path.join(os.path.join(dir, 'test_images'),'old_w_scratch')
-                dirout = os.path.join(dir, 'output')
+                dir = os.path.join(BASE_DIR, 'media')
+                dirupload = os.path.join(os.path.join(dir, 'restore_upload'), 'old_w_scratch')
+                dirout = os.path.join(os.path.join(dir, 'restore_img'),file_name)
                 run_cmd(
-                    "python image_restore/restorage/run.py --input_folder " + dirupload + " --output_folder " + dirout + " --GPU 0")
+                    "python image_restore/restorage/run.py --input_folder " + dirupload + " --output_folder " + dirout + " --GPU 0 --with_scratch")
                 # upload_img = os.path.join(dirupload, file_name)
                 # retore_img = os.path.join(os.path.join(dirout,'final_output'),file_name)
                 form = ImageUploadForm()
-                retore_img="../../../../image_restore/restorage/output/final_output/" + file_name
-                upload_img = "../../../../image_restore/restorage/test_images/old_w_scratch/" + file_name
+                retore_img= 'restore_img/'+ file_name + '/final_output/'+file_name
+                upload_img = 'restore_upload/old_w_scratch/'+file_name
+
+
                 restore_image_uri = retore_img
                 image_uri= upload_img
             except RuntimeError as re:
