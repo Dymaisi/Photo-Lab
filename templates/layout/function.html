@@ -9,10 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     {% block title %}{% endblock %}
-    <title>Example Template</title>
+    <title>Photo-Lab</title>
+
 
     {% load static %}
     <!-- Custom fonts for this template-->
+    <link rel="shortcut icon" href="{% static 'image/favicon.ico' %}" type="image/x-icon">
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
     <!-- Page level plugin CSS-->
@@ -25,8 +27,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/demo_option.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/component_option.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/background.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/background.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/fancySelect.css' %}"/>
     <style>
         .bg {
             background: url(./../static/image/source.gif);
@@ -105,7 +105,8 @@
 
 
 <!-- Bootstrap core JavaScript-->
-<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<!--与jquery-2.1.0.min.js冲突，注释后下拉选择框样式恢复-->
+<!--<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>-->
 <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 <!-- Core plugin JavaScript-->

@@ -1,24 +1,70 @@
-<h1>图像上色</h1>
-<p>通过神经网络为你的黑白照片上色</p>
-<p><small>Further information:
-    <a href="" target="_blank">Blog Post</a>,
-    <a href="https://github.com/stefanbschneider/pytorch-django" target="_blank">GitHub</a></small>
-</p>
+{% extends 'layout/function.html' %}
 
-<form method="post" enctype="multipart/form-data" style="margin-top: 50px; margin-bottom: 30px;">{% csrf_token %}
-    {{ form }}
-    <button type="submit" id="btnUpload" class="btn btn-primary">Upload</button>
-</form>
+{% load static %}
+{% block body %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/slider.css' %}"/>
+<link rel="stylesheet" media="screen, projection" href="{% static 'css/fancySelect.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}"/>
+<div class="bg bg-blur"></div>
+<div class="content-wrapper">
+    <div class="container" style="padding-top:20px">
+        <div style="display:grid; justify-self: center;justify-content:center;grid-template-columns: 300px 1200px;">
+            <div id="style" style="background: transparent;width:200px;height: 200px;margin-left:232px">
+                <img src="{% static 'image/img_default.png' %}"
+                     style=" max-width: 100%;max-height: 100%;"/>
+            </div>
+            <header class="codrops-header">
+                <h1>图像上色</h1>
+                <p>点击 ⌈上传图片⌋ 按钮，选择一张黑白图片</p>
+            </header>
+        </div>
 
-{% if image_uri is not None %}
+            <div style="background:transparent;transform:translateY(-180px)">
+            <form method="post" enctype="multipart/form-data" style="margin-top: 50px; margin-bottom: 30px;display:grid;
+            justify-self: center;justify-content:center;grid-template-columns: 250px 0px 250px 250px;
+            transform:translate(15%,238%);">{% csrf_token %}
+                    {{ form }}
 
-    <img src="{{ image_uri }}" class="img-fluid" alt="Uploaded image"
-         style="max-width: min(500px, 100%); height: auto; margin-top: 30px;">
-    <img src="{{ color_image_uri }}" class="img-fluid" alt="Color image"
-         style="max-width: min(500px, 100%); height: auto; margin-top: 30px;">
+                <button type="submit" id="btnUpload" class="btn btn-primary" style="height:41px;width:150px;transform:translateX(100px)">上传图片</button>
+            </form>
+            </div>
 
-{% else %}
-    <div class="alert alert-danger" role="alert">
-            Something goes wrong.
-    </div>
-{% endif %}
+        <section class="demo-4">
+            <div class="grid"
+                 style="display: grid;grid-template-columns: 650px 650px ;grid-template-rows: 400px; justify-self: center;justify-content:center;z-index:-1">
+                <div class="box" style="width:600px;height:400px">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <line class="top" x1="0" y1="0" x2="1800" y2="0" style="stroke-dasharray: 600 420;"/>
+                        <line class="left" x1="0" y1="400" x2="0" y2="-800" style="stroke-dasharray: 400 280;"/>
+                        <line class="bottom" x1="600" y1="400" x2="-1200" y2="400" style="stroke-dasharray: 600 420;"/>
+                        <line class="right" x1="600" y1="0" x2="600" y2="1200" style="stroke-dasharray: 400 280;"/>
+                    </svg>
+                    <div id="image" style="  background: transparent;width:100%;height: 100%;">
+                        <img src="{{ image_uri }}" style="height:100%; max-width: 95%;max-height: 95%;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);">
+<!--                        <img src="{% static 'image/img_default.png' %}"-->
+<!--                             style=" max-width: 95%;max-height: 95%;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);"/>-->
+                    </div>
+                </div>
+                <div class="box" style="width:600px;height:400px">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <line class="top" x1="0" y1="0" x2="1800" y2="0" style="stroke-dasharray: 600 420;"/>
+                        <line class="left" x1="0" y1="400" x2="0" y2="-800" style="stroke-dasharray: 400 280;"/>
+                        <line class="bottom" x1="600" y1="400" x2="-1200" y2="400" style="stroke-dasharray: 600 420;"/>
+                        <line class="right" x1="600" y1="0" x2="600" y2="1200" style="stroke-dasharray: 400 280;"/>
+                    </svg>
+                    <div id="image_get" style="  background: transparent;width:100%;height: 100%;">
+                        <img src="{{ color_image_uri }}"
+                             style=" max-width: 95%;max-height: 95%;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);"/>
+                    </div>
+                </div>
+            </div><!-- /grid -->
+        </section>
+
+    </div><!-- /container -->
+</div>
+
+<script src="{% static 'js/button.js' %}"></script>
+<script src="{% static 'js/jquery-2.1.0.min.js' %}" type="text/javascript"></script>
+{% endblock %}
+{% block javascript %}
+{% endblock %}

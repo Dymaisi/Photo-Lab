@@ -4,16 +4,16 @@
 {% block body %}
     <div class="container" >
         <div class="card card-login mx-auto mt-5">
-            <div class="card-header">Login</div>
+            <div class="card-header">登录</div>
             <div class="card-body">
                 <form class="form-horizontal" role="form" method="POST">
                     {% csrf_token %}
                     {% include 'includes/bs4_form_all.html' with form=form %}
-                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-sign-in"></i> Login</button>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-sign-in"></i>登录</button>
                 </form>
                 <div class="text-center">
-                    <a class="d-block small mt-3" href="/register">Register an Account</a>
-                    <a class="d-block small" href="/password/reset">Forgot Password?</a>
+                    <a class="d-block small mt-3" href="/register">注册账号</a>
+                    <a class="d-block small" href="/password/reset">&nbsp;&nbsp;&nbsp;忘记密码？</a>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
 {% endblock %}
 {% block javascript %}
     <script type="text/javascript">
-        $("#id_username").attr("placeholder", "Enter Username");
-        $("#id_password").attr("placeholder", "Enter Password");
+        $("#id_username").attr("placeholder", "输入用户名...");
+        $("#id_password").attr("placeholder", "输入密码...");
     </script>
 {% endblock %}

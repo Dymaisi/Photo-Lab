@@ -121,8 +121,8 @@ def to_rgb(grayscale_input, ab_input, save_path=None, save_name=None):
   color_image[:, :, 0:1] = color_image[:, :, 0:1] * 100
   color_image[:, :, 1:3] = color_image[:, :, 1:3] * 255 - 128
   color_image = lab2rgb(color_image.astype(np.float64))
-  # grayscale_input = grayscale_input.squeeze().numpy()
-  fname='color.jpg'
+  grayscale_input = grayscale_input.squeeze().numpy()
+  fname='./image_color/color.jpg'
   plt.imsave(arr=color_image,fname=fname)
   img=Image.open(fname)
   img_byte = io.BytesIO()

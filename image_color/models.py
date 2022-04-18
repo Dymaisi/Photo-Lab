@@ -1,6 +1,4 @@
 from django.db import models
-
+from crud.models import Member,ColorUpload
 # Create your models here.
-class ColorUpload(models.Model):
-    user = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to='color_upload/', default='avatar.jpg')
+

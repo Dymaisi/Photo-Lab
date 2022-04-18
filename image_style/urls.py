@@ -5,6 +5,6 @@ from . import views
 
 app_name = 'image_style'
 urlpatterns = [
-    # two paths: with or without given image
-    path('', views.index, name='style'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  # two paths: with or without given image
+                  path('', views.index, name='style'),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

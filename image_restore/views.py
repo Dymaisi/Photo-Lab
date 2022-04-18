@@ -56,7 +56,7 @@ def index(request):
                 # upload_img = os.path.join(dirupload, file_name)
                 # retore_img = os.path.join(os.path.join(dirout,'final_output'),file_name)
                 form = ImageUploadForm()
-                retore_img= 'restore_img/'+ file_name + '/final_output/'+file_name
+                retore_img= 'restore_img/'+ file_name + '/final_output/'+file_name.split('.')[0]+'.png'
                 upload_img = 'restore_upload/old_w_scratch/'+file_name
 
 

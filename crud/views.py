@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Member, Document, Ajax, CsvUpload
+from .models import Member, Document, Ajax, CsvUpload,StyleUpload
 import datetime
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
@@ -84,19 +84,9 @@ def delete(request, id):
 @login_required
 def fileupload(request):
     if request.method == 'POST' and request.FILES['myfile']:
-        myfile = request.FILES['myfile']
-        fs = FileSystemStorage()
-        document = Document(
-            description=request.POST['description'],
-            document=myfile.name,
-            uploaded_at=datetime.datetime.now(), )
-        document.save()
-        messages.success(request, 'Member was created successfully!')
-        filename = fs.save(myfile.name, myfile)
-        uploaded_file_url = fs.url(filename)
-        return redirect('fileupload')
+        pass
     else:
-        documents = Document.objects.order_by('-uploaded_at')[:3]
+        documents = StyleUpload.objects.order_by('-uploaded_at')[:3]
         context = {'documents': documents}
     return render(request, 'fileupload.html', context)
 
@@ -190,66 +180,6 @@ def user_delete(request, id):
     messages.error(request, 'User was deleted successfully!')
     return redirect('/users')
 
-@login_required
-def upload_csv(request):
-    if 'GET' == request.method:
-        # csv_list = CsvUpload.objects.all()
-        # paginator = Paginator(csv_list, 7)
-        # page = request.GET.get('page')
-        # try:
-        #     csvdata = paginator.page(page)
-        # except PageNotAnInteger:
-        #     csvdata = paginator.page(1)
-        # except EmptyPage:
-        #     csvdata = paginator.page(paginator.num_pages)
-        # return render(request, 'upload_csv.html', {'csvdata': csvdata})
-        csvdata = CsvUpload.objects.all()
-        context = {'csvdata': csvdata}
-        return render(request, 'upload_csv.html', context)
-    try:
-        csv_file = request.FILES["csv_file"]
-
-        if len(csv_file) == 0:
-            messages.error(request, 'Empty File')
-            return render(request, 'upload_csv.html')
-
-        if not csv_file.name.endswith('.csv'):
-            messages.error(request, 'File is not CSV type')
-            return render(request, 'upload_csv.html')
-
-        if csv_file.multiple_chunks():
-            messages.error(request, 'Uploaded file is too big (%.2f MB).' % (csv_file.size / (1000 * 1000),))
-            return render(request, 'upload_csv.html')
-
-        file_data = csv_file.read().decode("utf-8")
-
-        lines = file_data.split("\n")
-        for index, line in enumerate(lines):
-            fields = line.split(",")
-            if index == 0:
-                if (fields[0] == 'name') and (fields[1] == 'description') and (fields[2] == 'end_date') and (
-                        fields[3] == 'notes'):
-                    pass
-                else:
-                    messages.error(request, 'File is not Correct Headers')
-                    return render(request, 'upload_csv.html')
-                    break
-            else:
-                print(index)
-                if (len(fields[0]) != 0) and (len(fields[1]) != 0) and (len(fields[2]) != 0) and (len(fields[3]) != 0):
-                    data = CsvUpload(
-                        name=fields[0],
-                        description=fields[1],
-                        end_date=datetime.datetime.now(),
-                        notes=fields[3]
-                    )
-                    data.save()
-        messages.success(request, "Successfully Uploaded CSV File")
-        return redirect('/upload/csv/')
-
-    except Exception as e:
-        messages.error(request, "Unable to upload file. " + e)
-        return redirect('/upload/csv/')
 
 
 @login_required

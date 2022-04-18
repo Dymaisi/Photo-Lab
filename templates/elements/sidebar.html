@@ -10,21 +10,26 @@
             <i class="fas fa-fw fa-file"></i>
             <span>个人中心</span>
         </a>
-        </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <a class="dropdown-item" href="{% url 'changePassword' %}">密码修改</a>
             <a class="dropdown-item" href="{% url 'fileupload' %}">图片管理</a>
 
         </div>
-
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'fileupload' %}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>文件上传</span>
+        </a>
+    </li>
+
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-folder"></i>
             <span>Users</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="{% url 'users' %}">User List</a>
+            <a class="dropdown-item" href="{% url 'users' %}">用户列表</a>
         </div>
     </li>
 </ul>
